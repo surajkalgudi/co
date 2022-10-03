@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "910181226296",
+    "project_id": "can-cer-vive-d922c",
+    "storage_bucket": "can-cer-vive-d922c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:910181226296:android:175e1b32ffe3d4996f13cd",
+        "android_client_info": {
+          "package_name": "com.example.co_ordinator"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "910181226296-f48rif5ipk155uct3qv044775givkcqq.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.co_ordinator",
+            "certificate_hash": "4941be45c8bfb7e05c12b4d58810cb85c60fdae8"
+          }
+        },
+        {
+          "client_id": "910181226296-5b4ftq2l6rftn74hbm6savrepvmdr96g.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB9SFx9bI1FAgQzaBMagRGAVKaNGjUT6K0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "910181226296-5b4ftq2l6rftn74hbm6savrepvmdr96g.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
