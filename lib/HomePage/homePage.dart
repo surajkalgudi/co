@@ -7,6 +7,7 @@ import '../patients/PatientsDetails.dart';
 import 'NavBar.dart';
 
 class HomePage extends StatelessWidget {
+  final searchController = TextEditingController();
   String id='/';
   int day=1;
   int selsctedIconIndex = 1;
@@ -63,7 +64,7 @@ class HomePage extends StatelessWidget {
 
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
+                        children: const [
                           SizedBox(
                             height: 15,
                           ),
@@ -76,17 +77,18 @@ class HomePage extends StatelessWidget {
                           Text('Co-ordinator',
                             style: TextStyle(
                                 fontSize: 30
-                            ),)
+                            ),),
                         ],
                       ),
                     ],
                   ),
                 ),
               ),
-
+              const SizedBox(height: 10,),
               Padding(
                 padding: const EdgeInsets.fromLTRB(17, 0, 17, 10),
                 child: TextField(
+                  controller: searchController,
                   decoration: InputDecoration(
                     filled: true,
                     fillColor: Color(0xffEFEFEF),
@@ -95,13 +97,14 @@ class HomePage extends StatelessWidget {
                       borderSide: BorderSide.none
                     ),
                     hintText: "Search for patients",
-                    suffixIcon: Icon(Icons.search),
+                    suffixIcon: IconButton( onPressed: () {
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) => PatientDetails(UHID: searchController,)));
+                    }, icon: const Icon(Icons.search),),
                     prefixIconColor: Colors.black
                   ),
                 ),
               ),
-
-
               Padding(
                 padding: const EdgeInsets.only(left: 20),
                 child: Row(
@@ -194,11 +197,11 @@ class HomePage extends StatelessWidget {
                           height: 150,
                           decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(20),
-                              color:  Colors.deepPurple,
-                              boxShadow: [new BoxShadow(
-                                color: Color(0xff918fa5),
-                                blurRadius: 10.0,
-                              ),]
+                              color:  Colors.lightBlueAccent[200],
+                              // boxShadow: [new BoxShadow(
+                              //   color: Color(0xff918fa5),
+                              //   blurRadius: 10.0,
+                              // ),]
                           ),
                         ),
                       ),
@@ -329,7 +332,7 @@ class HomePage extends StatelessWidget {
           ),
           GestureDetector(
             onTap: (){
-              Navigator.pushReplacement(context, MaterialPageRoute(builder: (_) =>  Patients()));
+              Navigator.push(context, MaterialPageRoute(builder: (_) =>  Patients()));
             },
             child: Icon(Icons.people, size: 25,
                 color: Colors.black54),
@@ -441,6 +444,7 @@ class AppointmentCard extends StatelessWidget {
             ),
           ),
         ),
+        const SizedBox(height: 20,),
       ],
     );
   }

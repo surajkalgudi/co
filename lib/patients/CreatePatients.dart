@@ -174,7 +174,7 @@ class _createPatientState extends State<createPatient> {
                   controller: controllerCanerType,
                   decoration: InputDecoration(
                       labelText: 'Cancer Type',
-                      suffixIcon: Icon(Icons.type_specimen),
+                      //suffixIcon: Icon(Icons.type_specimen),
                       // hintText: 'Password',
                       border: InputBorder.none),
                 ),
@@ -244,6 +244,7 @@ class _createPatientState extends State<createPatient> {
               height: 24,
             ),
             ElevatedButton(
+              //TODO caner => "cancer" ::: hopsital => "hospital"
                 onPressed: () {
                   dbRef.child(controllerUHID.text).set({
                     'name': controllerName.text,

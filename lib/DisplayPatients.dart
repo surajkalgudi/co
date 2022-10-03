@@ -1,8 +1,11 @@
+
 import 'package:co_ordinator/patients/updatePatients.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:firebase_database/ui/firebase_animated_list.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+
+
 
 class DisplayPatients extends StatefulWidget  {
   const DisplayPatients({Key? key}) : super(key: key);
@@ -22,7 +25,7 @@ class _DisplayPatientsState extends State<DisplayPatients> {
   Widget _Patients({Map? patients}){
     return Container(
       decoration: BoxDecoration(
-          color: Colors.grey[200],
+          color: Colors.lightBlue[100],
           borderRadius: BorderRadius.circular(30)
       ),
       margin: EdgeInsets.symmetric(vertical: 10),
@@ -43,6 +46,10 @@ class _DisplayPatientsState extends State<DisplayPatients> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back, color: Colors.black),
+          onPressed: () => Navigator.of(context).pop(),
+        ),
         title: Text(
           "Can-cer vive",
           style: TextStyle(color: Colors.black),
@@ -55,13 +62,20 @@ class _DisplayPatientsState extends State<DisplayPatients> {
         padding: EdgeInsets.all(20),
         height: double.infinity,
         child: FirebaseAnimatedList(
+          defaultChild:  const Center(
+            child:  CircularProgressIndicator(
+              value: 0.8,
+              strokeWidth: 10,
+            ),
+          ),
           query:_display ,
           itemBuilder: (BuildContext context, DataSnapshot snapshot, Animation<double> animation, int index){
             Map? patients =  snapshot.value as Map?;
-            return _Patients(patients: patients);
+            return  _Patients(patients: patients) ;
           },
         ),
       ),
+
     );
   }
 }

@@ -38,7 +38,7 @@ dependencies:
   firebase_core:
   firebase_database: ^9.1.5
   intl: ^0.17.0
-  firebase_auth: ^3.10.0
+  firebase_auth:
   url_launcher: ^6.0.9
   firebase_storage:
   file_picker:

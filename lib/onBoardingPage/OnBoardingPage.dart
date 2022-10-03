@@ -291,31 +291,38 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
           ),
         ),
         bottomSheet: _currentPage == 3
-            ? Container(
-          height: 95.0,
-          width: double.infinity,
-          color: Colors.white,
-          child: GestureDetector(
-            onTap: () {
-              Navigator.of(context).pushReplacement(
-                  MaterialPageRoute(builder: (_) =>LoginPage() ));
-
-            },
-            child: Center(
-              child: Padding(
-                padding: EdgeInsets.only(bottom: 15.0),
-                child: Text(
-                  'Get started',
-                  style: TextStyle(
-                    color: Colors.blueAccent,
-                    fontSize: 30.0,
-                    fontWeight: FontWeight.w900,
+            ? Padding(
+              padding: const EdgeInsets.only(bottom: 30 , left: 70),
+              child: GestureDetector(
+                onTap: (){
+                  Navigator.of(context).pushReplacement(
+                      MaterialPageRoute(builder: (_) =>LoginPage() ));
+                },
+                child: Container(
+          decoration: BoxDecoration(
+                  color: Colors.white,
+                  gradient: LinearGradient(colors: [Color(0xff15aaff), Color(0xffadf7f2)],
+                    begin: Alignment.centerLeft,
+                    end: Alignment.centerRight,
                   ),
+                  borderRadius: BorderRadius.circular(30.0)
+          ),
+          height: 60.0,
+
+          width: 250,
+          child: Center(
+            child: Text(
+                'Get started',
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 20.0,
+                  fontWeight: FontWeight.w900,
                 ),
-              ),
             ),
           ),
-        )
+        ),
+              ),
+            )
             : Text(''),
       ),
     );
