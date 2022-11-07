@@ -42,6 +42,8 @@ dependencies:
   url_launcher: ^6.0.9
   firebase_storage:
   file_picker:
+  flutter_bloc: ^8.1.1
+
 
 
 dev_dependencies:

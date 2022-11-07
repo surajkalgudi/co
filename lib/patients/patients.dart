@@ -1,5 +1,7 @@
 
+import 'package:co_ordinator/HomePage/Questions.dart';
 import 'package:co_ordinator/patients/PatientsDetails.dart';
+import 'package:co_ordinator/settings/settings_screen.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:firebase_database/ui/firebase_animated_list.dart';
 import 'package:flutter/material.dart';
@@ -40,6 +42,16 @@ class _PatientsState extends State<Patients> {
               MaterialPageRoute(builder: (context) => PatientDetails(
                 UHID: patients!['UHID'],
                 name: patients['name'],
+                age:patients['age'],
+                martialStatus:patients['martial status'],
+                children:patients['children'],
+                gender:patients['gender'],
+                stage:patients['Stage'],
+                treatmentPlan:patients['Treatment Plan'],
+                comorbidities:patients['Comorbidities'],
+                history:patients['History'],
+                social:patients['Social History'],
+                family:patients['Family History'],
                 phno: patients["phoneNo"],
                 address: patients["address"],
                 doctor: patients["doctor"],
@@ -95,7 +107,7 @@ class _PatientsState extends State<Patients> {
         items: <Widget>[
           GestureDetector(
             onTap: (){
-              Navigator.pushReplacement(context, MaterialPageRoute(builder: (_) =>  NavBar()));
+              Navigator.pushReplacement(context, MaterialPageRoute(builder: (_) =>  SettingsScreen()));
             },
             child: Icon(Icons.settings, size: 25
                 ,color: Colors.black54),
@@ -117,7 +129,7 @@ class _PatientsState extends State<Patients> {
 
           GestureDetector(
             onTap: (){
-              //  Navigator.pushReplacement(context, MaterialPageRoute(builder: (_) =>  WorkoutsPage()));
+               Navigator.pushReplacement(context, MaterialPageRoute(builder: (_) =>  Questions()));
             },
             child: Icon(Icons.chat, size: 25,
                 color: Colors.black54),

@@ -9,8 +9,8 @@ import 'package:flutter/material.dart';
  //snapshot = await ref.child("Patients/${widget.UHID}/name").get(); // important
 
 class PatientDetails extends StatefulWidget  {
-  var UHID, name, phno , address, doctor, hospital,cancertype ;
-  PatientDetails({Key? key, required this.UHID,  this.name,  this.phno,  this.address,  this.doctor,  this.hospital,  this.cancertype}) : super(key: key);
+  var UHID, name,age,martialStatus,children,gender,stage,treatmentPlan,comorbidities,history,social,family, phno , address, doctor, hospital,cancertype;
+  PatientDetails({Key? key, required this.UHID,  this.name,this.age,this.martialStatus,this.children,this.gender,this.stage,this.treatmentPlan,this.comorbidities,this.history,this.family,this.social   ,this.phno,  this.address,  this.doctor,  this.hospital,  this.cancertype}) : super(key: key);
 
 
   @override

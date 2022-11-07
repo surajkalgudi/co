@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
 class UpdatePatients extends StatefulWidget {
+  var bmi;
   var UHID;
    UpdatePatients({Key? key, required this.UHID}) : super(key: key);
 
@@ -31,6 +32,10 @@ class _UpdatePatientsState extends State<UpdatePatients> {
   final controllerEnduranceUpperLimb = TextEditingController();
   final controllerEnduranceLowerLimb = TextEditingController();
   final controllerRBC = TextEditingController();
+  final controllerWBC = TextEditingController();
+  final controllerHbA1c = TextEditingController();
+  final controllerFBS = TextEditingController();
+  final controllerPPBS = TextEditingController();
   final controllerNeutophil = TextEditingController();
   final controllerEosinophil = TextEditingController();
   final controllerLymphocyte = TextEditingController();
@@ -43,6 +48,22 @@ class _UpdatePatientsState extends State<UpdatePatients> {
   final controllerUrea = TextEditingController();
   final controllerDischarge = TextEditingController();
   final controllerUHID = TextEditingController();
+  final controllerTotalCholesterol=TextEditingController();
+  final controllerLDLCholesterol=TextEditingController();
+  final controllerHDLCholesterol=TextEditingController();
+  final controllerVLDLCholesterol=TextEditingController();
+  final controllerTriglyceride=TextEditingController();
+
+  final controllerTotal=TextEditingController();
+  final controllerFatTotal=TextEditingController();
+  final controllerCalfSkin=TextEditingController();
+
+  final controllerCalfCircumference=TextEditingController();
+  final controllerMidArm=TextEditingController();
+  final controllerMidQuadriceps=TextEditingController();
+  final controllerTriceps=TextEditingController();
+  // final controllerCalfSkin=TextEditingController();
+
 
   late DatabaseReference dbRef;
 
@@ -95,6 +116,21 @@ class _UpdatePatientsState extends State<UpdatePatients> {
               height: 24,
             ),
 
+            Components(controllerText: controllerHbA1c, displayText: "HbA1c"),
+            SizedBox(
+              height: 24,
+            ),
+
+            Components(controllerText: controllerFBS, displayText: "FBS"),
+            SizedBox(
+              height: 24,
+            ),
+
+            Components(controllerText: controllerPPBS, displayText: "PPBS"),
+            SizedBox(
+              height: 24,
+            ),
+
             Text(
               "Body Composition:",
               style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
@@ -129,6 +165,11 @@ class _UpdatePatientsState extends State<UpdatePatients> {
               height: 24,
             ),
             Components(
+                controllerText: controllerFatTotal, displayText: "Total"),
+            SizedBox(
+              height: 24,
+            ),
+            Components(
                 controllerText: controllerFatTrunk, displayText: "Trunk"),
             SizedBox(
               height: 24,
@@ -152,6 +193,11 @@ class _UpdatePatientsState extends State<UpdatePatients> {
                 style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
               ),
             ),
+            SizedBox(
+              height: 24,
+            ),
+            Components(
+                controllerText: controllerTotal, displayText: "Total"),
             SizedBox(
               height: 24,
             ),
@@ -196,6 +242,53 @@ class _UpdatePatientsState extends State<UpdatePatients> {
               height: 24,
             ),
 
+
+
+
+
+            Padding(
+              padding: const EdgeInsets.only(left: 10),
+              child: Text(
+                "Circumference",
+                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+              ),
+            ),
+            SizedBox(
+              height: 24,
+            ),
+
+            Components(
+                controllerText: controllerCalfCircumference,
+                displayText: "Calf Circumference"),
+            SizedBox(
+              height: 24,
+            ),
+
+            Components(
+                controllerText: controllerMidArm,
+                displayText: "Mid-Arm"),
+            SizedBox(
+              height: 24,
+            ),
+
+
+            Components(
+                controllerText: controllerTriceps,
+                displayText: "Triceps Skinfold"),
+            SizedBox(
+              height: 24,
+            ),
+
+            Components(
+                controllerText: controllerCalfSkin,
+                displayText: "Calf Skin-Circumference"),
+            SizedBox(
+              height: 24,
+            ),
+            //TODO date dominent hand and leg
+
+            //TODO pdf uploading
+            //TODO Endurance left and right
             Padding(
               padding: const EdgeInsets.only(left: 10),
               child: Text(
@@ -236,16 +329,12 @@ class _UpdatePatientsState extends State<UpdatePatients> {
             SizedBox(
               height: 24,
             ),
-            Padding(
-              padding: const EdgeInsets.only(left: 10),
-              child: Text(
-                "WBC count:",
-                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-              ),
-            ),
+
+            Components(controllerText: controllerWBC, displayText: "WBC count"),
             SizedBox(
               height: 24,
             ),
+
 
             Components(
                 controllerText: controllerNeutophil, displayText: "Neutrophil"),
@@ -280,7 +369,7 @@ class _UpdatePatientsState extends State<UpdatePatients> {
             ),
 
             Components(
-                controllerText: controllerHctPvc, displayText: "HCT/PVC"),
+                controllerText: controllerHctPvc, displayText: "HCT/PCV"),
             SizedBox(
               height: 24,
             ),
@@ -327,6 +416,39 @@ class _UpdatePatientsState extends State<UpdatePatients> {
             ),
 
             Components(controllerText: controllerUrea, displayText: "Urea"),
+            SizedBox(
+              height: 24,
+            ),
+
+            Text(
+              "Lipid Profile Test:",
+              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+            ),
+            SizedBox(
+              height: 24,
+            ),
+
+            Components(controllerText: controllerTotalCholesterol, displayText: "Total Cholesterol"),
+            SizedBox(
+              height: 24,
+            ),
+
+            Components(controllerText: controllerLDLCholesterol, displayText: "LDL Cholesterol"),
+            SizedBox(
+              height: 24,
+            ),
+
+            Components(controllerText: controllerHDLCholesterol, displayText: "HDL Cholesterol"),
+            SizedBox(
+              height: 24,
+            ),
+
+            Components(controllerText: controllerVLDLCholesterol, displayText: "VLDL Cholesterol"),
+            SizedBox(
+              height: 24,
+            ),
+
+            Components(controllerText: controllerTriglyceride, displayText: "Triglyceride"),
             SizedBox(
               height: 24,
             ),
@@ -379,6 +501,12 @@ class _UpdatePatientsState extends State<UpdatePatients> {
             ElevatedButton(
 
                 onPressed: () {
+                  int weight=int.parse(controllerWeight.text);
+                  int height=int.parse(controllerHeight.text);
+                  double bmi=(weight/(height*height)) as double;
+
+
+
 
                   // Map<String, String> update = new Map();
                   //TODO in that first child UHID of the current patient haku
@@ -389,7 +517,7 @@ class _UpdatePatientsState extends State<UpdatePatients> {
                       'haemoglobin': controllerHb.text,
                       'Height': controllerHeight.text,
                       'Weight': controllerWeight.text,
-                      'BMI': controllerBMI.text,
+                      'BMI': bmi.toString(),
                       'Subcutaneous fat-Trunk': controllerFatTrunk.text,
                       'Subcutaneous fat-Hands': controllerFatHands.text,
                       'Subcutaneous fat-Legs': controllerFatLegs.text,
@@ -401,8 +529,9 @@ class _UpdatePatientsState extends State<UpdatePatients> {
                       'Strength parameters Lower-Limb':
                           controllerStrengthLowerLimb.text,
                       'Endurance Upper-Limb': controllerEnduranceUpperLimb.text,
-                      'Endurance Upper-Limb': controllerEnduranceLowerLimb.text,
+                      'Endurance Lower-Limb': controllerEnduranceLowerLimb.text,
                       'RBC': controllerRBC.text,
+                      'WBC':controllerWBC.text,
                       'Neutrinophil': controllerNeutophil.text,
                       'Eosinophil': controllerEosinophil.text,
                       'Lymphocytes': controllerLymphocyte.text,
@@ -413,6 +542,14 @@ class _UpdatePatientsState extends State<UpdatePatients> {
                       'Globulin': controllerGlobulin.text,
                       'Creatinine': controllerCreatinine.text,
                       'Urea': controllerUrea.text,
+                      'HbA1c':controllerHbA1c.text,
+                      'FBS':controllerFBS.text,
+                      'PPBS':controllerPPBS.text,
+                      'Total Cholesterol':controllerTotalCholesterol.text,
+                      'HDL Cholesterol':controllerHDLCholesterol.text,
+                      'LDL Cholesterol':controllerLDLCholesterol.text,
+                      'VLDL Cholesterol':controllerVLDLCholesterol.text,
+                      'Triglyceride':controllerTriglyceride.text,
                       'Discharge Details': controllerDischarge.text
                     }
                   });

@@ -1,9 +1,12 @@
 import 'package:co_ordinator/DisplayPatients.dart';
+import 'package:co_ordinator/HomePage/Questions.dart';
 import 'package:co_ordinator/patients/patients.dart';
+import 'package:co_ordinator/patients/search.dart';
 import 'package:flutter/material.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import '../patients/CreatePatients.dart';
 import '../patients/PatientsDetails.dart';
+import '../settings/settings_screen.dart';
 import 'NavBar.dart';
 
 class HomePage extends StatelessWidget {
@@ -99,7 +102,8 @@ class HomePage extends StatelessWidget {
                     hintText: "Search for patients",
                     suffixIcon: IconButton( onPressed: () {
                       Navigator.push(context,
-                          MaterialPageRoute(builder: (context) => PatientDetails(UHID: searchController,)));
+                          MaterialPageRoute(builder: (context) => Search(UHID: searchController.text )));
+                      print( searchController.text);
                     }, icon: const Icon(Icons.search),),
                     prefixIconColor: Colors.black
                   ),
@@ -318,7 +322,7 @@ class HomePage extends StatelessWidget {
         items: <Widget>[
           GestureDetector(
             onTap: (){
-              Navigator.pushReplacement(context, MaterialPageRoute(builder: (_) =>  NavBar()));
+              Navigator.pushReplacement(context, MaterialPageRoute(builder: (_) =>  SettingsScreen()));
             },
             child: Icon(Icons.settings, size: 25
                 ,color: Colors.black54),
@@ -340,7 +344,7 @@ class HomePage extends StatelessWidget {
 
           GestureDetector(
             onTap: (){
-            //  Navigator.pushReplacement(context, MaterialPageRoute(builder: (_) =>  WorkoutsPage()));
+              Navigator.pushReplacement(context, MaterialPageRoute(builder: (_) =>  Questions()));
             },
             child: Icon(Icons.chat, size: 25,
                 color: Colors.black54),

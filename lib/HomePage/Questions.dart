@@ -1,5 +1,12 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:co_ordinator/HomePage/homePage.dart';
+import 'package:co_ordinator/settings/settings_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:curved_navigation_bar/curved_navigation_bar.dart';
+
+import '../patients/patients.dart';
+import 'NavBar.dart';
 
 class Questions extends StatefulWidget {
   const Questions({Key? key}) : super(key: key);
@@ -9,6 +16,7 @@ class Questions extends StatefulWidget {
 }
 
 class _QuestionsState extends State<Questions> {
+  int selsctedIconIndex = 3;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -172,6 +180,53 @@ class _QuestionsState extends State<Questions> {
             height: 10,
           ),
         ],
+      ),
+      bottomNavigationBar: CurvedNavigationBar(
+        backgroundColor: Colors.deepPurple,
+        index: selsctedIconIndex,
+        height: 60.0,
+        onTap: (index) {
+          selsctedIconIndex = index;
+        },
+        animationDuration: Duration(
+          milliseconds: 200,
+        ),
+        items: <Widget>[
+          GestureDetector(
+            onTap: (){
+              Navigator.pushReplacement(context, MaterialPageRoute(builder: (_) =>  SettingsScreen()));
+            },
+            child: Icon(Icons.settings, size: 25
+                ,color: Colors.black54),
+          ),
+          GestureDetector(
+            onTap: (){
+                Navigator.pushReplacement(context, MaterialPageRoute(builder: (_) =>  HomePage()));
+
+            },
+            child: Icon(Icons.home, size: 25,
+                color: Colors.black54),
+          ),
+          GestureDetector(
+            onTap: (){
+              Navigator.push(context, MaterialPageRoute(builder: (_) =>  Patients()));
+            },
+            child: Icon(Icons.people, size: 25,
+                color: Colors.black54),
+          ),
+
+          GestureDetector(
+            onTap: (){
+              //  Navigator.pushReplacement(context, MaterialPageRoute(builder: (_) =>  WorkoutsPage()));
+            },
+            child: Icon(Icons.chat, size: 25,
+                color: Colors.black54),
+          ),
+        ],
+        color: Colors.white,
+        buttonBackgroundColor: Colors.white,
+
+        animationCurve: Curves.easeInOut,
       ),
     );
   }
